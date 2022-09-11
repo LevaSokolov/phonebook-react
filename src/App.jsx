@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-          <LoginWindow post={{id: 1, title: 'Javascript', body: 'Description'}} />
+          <LoginWindow />
     </div>
     
   );

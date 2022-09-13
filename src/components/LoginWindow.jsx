@@ -1,5 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { Layout } from "./Layout";
+import RegistrationWindow from "./RegistrationWindow";
 import Input from "./UI/Input/Input";
 import login from "./UI/Input/Input";
 
@@ -46,10 +49,11 @@ const LoginWindow = (props) => {
           <div className="remember-me">Remember me</div>
           <button className="forgotButton" onClick={() => alert('Well, congratulations')}>Forgot?</button>
         <button className="lowerButtons" onClick={pressLoginButton}>LOGIN</button>
+        <Link to='/register'>
         <button className="lowerButtons">REGISTER</button>
+        </Link>
       </div>
     </div>
   )
 }
-
 export default LoginWindow;

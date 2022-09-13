@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import LoginWindow from "./components/LoginWindow";
+import RegistrationWindow from "./components/RegistrationWindow";
 import './styles/App.css'
 
 function App() {
-  // const [value, setValue] = useState('input text')
 
   return (
-    <div className="App">
-          <LoginWindow />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="register" element={<RegistrationWindow/>}/>
+        <Route path="login" element={<LoginWindow/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

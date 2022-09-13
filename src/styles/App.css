@@ -15,13 +15,6 @@
   justify-content: center;
 } 
 
-
-
-.App {
-  margin-top: 10px;
-  width: 800px;
-}
-
 .title {
   margin-bottom: 40px;
   color: #303030;
@@ -42,7 +35,7 @@
   margin-left: auto;
   margin-right: auto;
   height: 600px;
-  width: 680px;
+  width: 700px;
 }
 
 .usernameInput {

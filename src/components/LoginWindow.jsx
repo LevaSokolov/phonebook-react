@@ -4,12 +4,13 @@ import React, { useState } from 'react';
 import {
   Routes, Route, Link, useNavigate, Navigate,
 } from 'react-router-dom';
-import { Layout } from './Layout';
+import PropTypes from 'prop-types';
+import Layout from './Layout';
 import RegistrationWindow from './RegistrationWindow';
 import Input from './UI/Input/Input';
 // import login from './UI/Input/Input';
 
-function LoginWindow(props) {
+function LoginWindow() {
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
   const navigate = useNavigate();
@@ -25,6 +26,8 @@ function LoginWindow(props) {
             if (response.status === 401) {
               throw new Error(data.message);
             }
+            // const { setToken } = props;
+            // setToken(data.token);
             localStorage.setItem('token', data.token);
             navigate('/main');
           })
@@ -57,4 +60,5 @@ function LoginWindow(props) {
     </div>
   );
 }
+
 export default LoginWindow;

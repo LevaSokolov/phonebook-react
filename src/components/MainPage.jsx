@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Routes, Route, Link, useNavigate, Navigate,
 } from 'react-router-dom';
@@ -11,11 +11,22 @@ import addContact from '../API/addContact';
 import PostServise from '../API/PostServise';
 
 function MainPage(props) {
-  const [inputValue, setZeroInputValue] = useState('');
-  const [contactsList, setContactsList] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [_contactsList, setContactsList] = useState([]);
+  const navigate = useNavigate();
 
-  function clearInput(event) {
-    setZeroInputValue(event.target.value);
+  const contactsList = _contactsList.filter(
+    (contact) => contact.first_name
+      .toLowerCase()
+      .includes(inputValue.toLowerCase())
+    || contact.last_name
+      .toLowerCase()
+      .includes(inputValue.toLowerCase())
+    || contact.phone_number.toString().includes(inputValue),
+  );
+
+  function onChange(event) {
+    setInputValue(event.target.value);
   }
 
   async function onAddClick() {
@@ -23,6 +34,13 @@ function MainPage(props) {
     const posts = await PostServise.getAll();
     setContactsList(posts);
   }
+
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+    if (!token) {
+      navigate('/login', { replace: true });
+    }
+  }, [token]);
 
   return (
     <>
@@ -36,7 +54,7 @@ function MainPage(props) {
         <div className="header">
           <h1 className="main-title">Phone book</h1>
           <Link to="/login">
-            <button className="log-out-button" id="log-out-button">Log Out</button>
+            <button className="log-out-button" id="log-out-button" onClick={() => { localStorage.removeItem('token'); }}>Log Out</button>
           </Link>
         </div>
         <div className="search-block">
@@ -45,9 +63,9 @@ function MainPage(props) {
             id="search-input"
             placeholder="Search contact"
             value={inputValue}
-            onChange={clearInput}
+            onChange={onChange}
           />
-          <button className="header-button" id="clear-button" onClick={clearInput}>Clear</button>
+          <button className="header-button" id="clear-button" onClick={() => { setInputValue(''); }}>Clear</button>
           <button className="header-button" id="add-contact" onClick={onAddClick}>Add contact</button>
         </div>
         <ContactsList contactsList={contactsList} setContactsList={setContactsList} />

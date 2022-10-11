@@ -7,18 +7,17 @@ import MainPage from './components/MainPage';
 import LoginWindow from './components/LoginWindow';
 import RegistrationWindow from './components/RegistrationWindow';
 import './styles/App.css';
+import NotFoundPage from './components/NotFoundPage';
 
 function App() {
-  const [token, setToken] = useState();
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginWindow setToken={setToken} />} />
-        <Route path="login" element={<LoginWindow setToken={setToken} />} />
+        <Route path="/" element={<LoginWindow />} />
+        <Route path="login" element={<LoginWindow />} />
         <Route path="register" element={<RegistrationWindow />} />
-        <Route path="main" element={<MainPage token={token} />} />
-        {/* <Route path="*" element={<NotFound/>} /> */}
+        <Route path="main" element={<MainPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

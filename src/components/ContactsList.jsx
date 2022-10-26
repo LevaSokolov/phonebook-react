@@ -1,49 +1,54 @@
-/* eslint-disable no-loop-func */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import PostServise from '../API/PostServise';
+import { useDispatch, useSelector } from 'react-redux';
 import '../styles/ContactsList.css';
-import contactDelete from '../API/deleteContact';
+import { deleteContactAction, getContactsListAction } from '../store/contacts/actions';
 
-function ContactsList({ contactsList, setContactsList }) {
-  async function fetchPosts() {
-    const posts = await PostServise.getAll();
-    setContactsList(posts);
+function ContactsList({ inputValue = '' }) {
+  // eslint-disable-next-line no-underscore-dangle
+  const _contactsList = useSelector((state) => state.contacts.items);
+  const dispatch = useDispatch();
+
+  function pressDeleteButton(id) {
+    dispatch(deleteContactAction(id));
   }
+
   useEffect(() => {
-    fetchPosts();
+    dispatch(getContactsListAction());
   }, []);
 
-  async function pressDeleteButton(id) {
-    await contactDelete(id);
-    fetchPosts();
-  }
-  const elements = contactsList.map((contact) => (
-    <React.Fragment key={contact.id}>
-      <div className="contactsUnderline ">{contact.first_name}</div>
-      <div className="contactsUnderline ">{contact.last_name}</div>
-      <div className="contactsUnderline ">{contact.phone_number}</div>
-      <button type="button" className="deleteButton" onClick={() => { pressDeleteButton(contact.id); }}>Delete</button>
-    </React.Fragment>
-  ));
+  const contactsList = _contactsList.filter(
+    (contact) => contact.first_name
+      .toLowerCase()
+      .includes(inputValue.toLowerCase())
+    || contact.last_name
+      .toLowerCase()
+      .includes(inputValue.toLowerCase())
+    || contact.phone_number.toString().includes(inputValue),
+  );
 
   return (
     <div className="contacts-grid">
-      {elements}
+      {contactsList.map((contact) => (
+        <React.Fragment key={contact.id}>
+          <div className="contactsUnderline ">{contact.first_name}</div>
+          <div className="contactsUnderline ">{contact.last_name}</div>
+          <div className="contactsUnderline ">{contact.phone_number}</div>
+          <button
+            type="button"
+            className="deleteButton"
+            onClick={() => { pressDeleteButton(contact.id); }}
+          >
+            Delete
+          </button>
+        </React.Fragment>
+      ))}
     </div>
   );
 }
 
-// cock
-
 ContactsList.propTypes = {
-  contactsList: PropTypes.arrayOf(PropTypes.shape({
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
-    phone_number: PropTypes.string,
-  })).isRequired,
-  setContactsList: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
 };
 
 export default ContactsList;

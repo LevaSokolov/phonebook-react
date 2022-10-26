@@ -1,13 +1,15 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import {
-  Routes, Route, Link, BrowserRouter,
-} from 'react-router-dom';
-import MainPage from './components/MainPage';
-import LoginWindow from './components/LoginWindow';
-import RegistrationWindow from './components/RegistrationWindow';
 import './styles/App.css';
+
+import React from 'react';
+import {
+  BrowserRouter,
+  Route, Routes,
+} from 'react-router-dom';
+
+import LoginWindow from './components/LoginWindow';
+import MainPage from './components/MainPage';
 import NotFoundPage from './components/NotFoundPage';
+import RegistrationWindow from './components/RegistrationWindow';
 
 function App() {
   return (

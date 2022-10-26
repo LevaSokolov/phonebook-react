@@ -10,20 +10,18 @@ import {
 import { addContactAction } from '../store/contacts/actions';
 import ContactsList from './ContactsList';
 
-function MainPage() {
+const MainPage = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
 
-  function onChange(event) {
+  const onChange = (event) => {
     setInputValue(event.target.value);
-  }
+  };
 
-  function onAddClick() {
+  const onAddClick = () => {
     dispatch(addContactAction());
-  }
-
-  // function expression
+  };
 
   const token = localStorage.getItem('token');
   useEffect(() => {
@@ -68,6 +66,6 @@ function MainPage() {
       </div>
     </>
   );
-}
+};
 
 export default MainPage;

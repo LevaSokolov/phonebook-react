@@ -1,11 +1,13 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
 import '../styles/App.css';
+
+import React, { useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+
 import Input from './UI/Input/Input';
 
-function RegistrationWindow() {
+const RegistrationWindow = () => {
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
   const pressRegButton = () => {
@@ -50,6 +52,6 @@ function RegistrationWindow() {
       </Link>
     </div>
   );
-}
+};
 
 export default RegistrationWindow;

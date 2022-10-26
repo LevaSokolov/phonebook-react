@@ -2,10 +2,8 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-function Layout() {
-  return (
+const Layout = () => (
     <div />
-  );
-}
+);
 
 export default Layout;

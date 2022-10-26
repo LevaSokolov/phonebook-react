@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import '../styles/ContactsList.css';
+
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { deleteContactAction, getContactsListAction } from '../store/contacts/actions';
 
-function ContactsList({ inputValue = '' }) {
+const ContactsList = ({ inputValue = '' }) => {
   // eslint-disable-next-line no-underscore-dangle
   const _contactsList = useSelector((state) => state.contacts.items);
   const dispatch = useDispatch();
 
-  function pressDeleteButton(id) {
+  const pressDeleteButton = (id) => {
     dispatch(deleteContactAction(id));
-  }
+  };
 
   useEffect(() => {
     dispatch(getContactsListAction());
@@ -45,7 +47,7 @@ function ContactsList({ inputValue = '' }) {
       ))}
     </div>
   );
-}
+};
 
 ContactsList.propTypes = {
   inputValue: PropTypes.string.isRequired,

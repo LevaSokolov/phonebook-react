@@ -1,4 +1,4 @@
-function contactDelete(id) {
+const contactDelete = (id) => {
   const token = localStorage.getItem('token');
   return fetch('http://127.0.0.1:5432/contacts', {
     method: 'DELETE',
@@ -7,6 +7,6 @@ function contactDelete(id) {
       contactId: id,
     }),
   });
-}
+};
 
 export default contactDelete;

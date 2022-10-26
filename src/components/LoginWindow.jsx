@@ -1,16 +1,18 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
-  Routes, Route, Link, useNavigate, Navigate,
+  Link, Navigate,
+  Route, Routes, useNavigate,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
 import Layout from './Layout';
 import RegistrationWindow from './RegistrationWindow';
 import Input from './UI/Input/Input';
 // import login from './UI/Input/Input';
 
-function LoginWindow() {
+const LoginWindow = () => {
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
   const navigate = useNavigate();
@@ -56,6 +58,6 @@ function LoginWindow() {
       </Link>
     </div>
   );
-}
+};
 
 export default LoginWindow;

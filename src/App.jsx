@@ -11,8 +11,7 @@ import MainPage from './components/MainPage';
 import NotFoundPage from './components/NotFoundPage';
 import RegistrationWindow from './components/RegistrationWindow';
 
-function App() {
-  return (
+const App = () => (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginWindow />} />
@@ -22,7 +21,6 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
-  );
-}
+);
 
 export default App;

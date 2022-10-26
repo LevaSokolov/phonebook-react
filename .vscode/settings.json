@@ -1,6 +1,9 @@
 {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+  "files.eol": "\n",
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

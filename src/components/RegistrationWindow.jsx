@@ -1,11 +1,10 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable no-unused-vars */
 import '../styles/App.css';
 
 import React, { useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import Input from './UI/Input/Input';
+import Button from './UI/Button';
+import Input from './UI/Input';
 
 const RegistrationWindow = () => {
   const [password, setPassword] = useState('');
@@ -39,16 +38,22 @@ const RegistrationWindow = () => {
   return (
     <div className="post">
       <strong className="title">REGISTER IN PHONEBOOK, BUDDY</strong>
-      <Input value={login} onChange={setLogin} />
-      <input
+      <Input
+        value={login}
+        onChange={setLogin}
+        className="usernameInput"
+        placeholder="Username"
+      />
+      <Input
+        value={password}
         className="passInput"
         placeholder="Password"
         type="password"
-        onChange={(event) => setPassword(event.target.value)}
+        onChange={setPassword}
       />
-      <button className="lowerButtons" onClick={pressRegButton}>REGISTER</button>
+      <Button className="lowerButtons" onClick={pressRegButton}>REGISTER</Button>
       <Link to="/login">
-        <button className="lowerButtons">GO BACK</button>
+        <Button className="lowerButtons">GO BACK</Button>
       </Link>
     </div>
   );

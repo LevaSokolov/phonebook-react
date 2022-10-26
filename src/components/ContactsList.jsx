@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteContactAction, getContactsListAction } from '../store/contacts/actions';
+import Button from './UI/Button';
 
 const ContactsList = ({ inputValue = '' }) => {
   // eslint-disable-next-line no-underscore-dangle
@@ -33,16 +34,16 @@ const ContactsList = ({ inputValue = '' }) => {
     <div className="contacts-grid">
       {contactsList.map((contact) => (
         <React.Fragment key={contact.id}>
-          <div className="contactsUnderline ">{contact.first_name}</div>
-          <div className="contactsUnderline ">{contact.last_name}</div>
-          <div className="contactsUnderline ">{contact.phone_number}</div>
-          <button
+          <div className="contactsUnderline">{contact.first_name}</div>
+          <div className="contactsUnderline">{contact.last_name}</div>
+          <div className="contactsUnderline">{contact.phone_number}</div>
+          <Button
             type="button"
             className="deleteButton"
             onClick={() => { pressDeleteButton(contact.id); }}
           >
             Delete
-          </button>
+          </Button>
         </React.Fragment>
       ))}
     </div>

@@ -1,7 +1,12 @@
 import { FILL_CONTACTS_LIST } from './types';
 
 const initialState = {
-  items: [],
+  items: [{
+    id: 1,
+    first_name: 'cock',
+    last_name: 'dick',
+    phone_number: 228322,
+  }],
 };
 
 const contactsReducer = (state = initialState, { type, payload } = {}) => {

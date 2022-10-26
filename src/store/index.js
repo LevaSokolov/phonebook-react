@@ -1,5 +1,6 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
+
 import contactsReducer from './contacts/reducer';
 import userReducer from './user/reducer';
 

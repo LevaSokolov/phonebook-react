@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import '../styles/MainPage.css';
 
 import React, { useEffect, useState } from 'react';
@@ -9,15 +8,13 @@ import {
 
 import { addContactAction } from '../store/contacts/actions';
 import ContactsList from './ContactsList';
+import Button from './UI/Button';
+import Input from './UI/Input';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
-
-  const onChange = (event) => {
-    setInputValue(event.target.value);
-  };
 
   const onAddClick = () => {
     dispatch(addContactAction());
@@ -42,25 +39,25 @@ const MainPage = () => {
         <div className="header">
           <h1 className="main-title">Phone book</h1>
           <Link to="/login">
-            <button
+            <Button
             className="log-out-button"
             id="log-out-button"
             onClick={() => { localStorage.removeItem('token'); }}
             >
               Log Out
-              </button>
+              </Button>
           </Link>
         </div>
         <div className="search-block">
-          <input
+          <Input
             className="search-input"
             id="search-input"
             placeholder="Search contact"
             value={inputValue}
-            onChange={onChange}
+            onChange={setInputValue}
           />
-          <button className="header-button" id="clear-button" onClick={() => { setInputValue(''); }}>Clear</button>
-          <button className="header-button" id="add-contact" onClick={onAddClick}>Add contact</button>
+          <Button className="header-button" id="clear-button" onClick={() => { setInputValue(''); }}>Clear</Button>
+          <Button className="header-button" id="add-contact" onClick={onAddClick}>Add contact</Button>
         </div>
         <ContactsList inputValue={inputValue} />
       </div>

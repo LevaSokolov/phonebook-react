@@ -49,7 +49,7 @@ const LoginWindow = () => {
       />
       <input className="check" type="checkbox" />
       <div className="remember-me">Remember me</div>
-      <Button className="forgotButton" onClick={() => alert('Well, congratulations')}>Forgot?</Button>
+      <Button className="forgotButton">Forgot?</Button>
       <Button className="lowerButtons" onClick={pressLoginButton}>LOGIN</Button>
       <Link to="/register">
         <Button className="lowerButtons">REGISTER</Button>

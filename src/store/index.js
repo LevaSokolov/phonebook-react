@@ -1,13 +1,7 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import contactsReducer from './contacts/reducer';
-import userReducer from './user/reducer';
-
-const globalReducer = combineReducers({
-  user: userReducer,
-  contacts: contactsReducer,
-});
+import globalReducer from './reducers';
 
 const store = createStore(globalReducer, applyMiddleware(thunk));
 

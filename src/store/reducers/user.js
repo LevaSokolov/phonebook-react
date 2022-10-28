@@ -1,4 +1,4 @@
-import { FILL_USER_INFO } from './types';
+import { FILL_USER_INFO } from '../types/user';
 
 const initialState = {
   info: {

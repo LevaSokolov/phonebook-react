@@ -6,17 +6,17 @@ import {
   Route, Routes,
 } from 'react-router-dom';
 
-import LoginWindow from './components/LoginWindow';
-import MainPage from './components/MainPage';
-import NotFoundPage from './components/NotFoundPage';
-import RegistrationWindow from './components/RegistrationWindow';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RegistrationPage from './pages/RegistrationPage';
 
 const App = () => (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginWindow />} />
-        <Route path="login" element={<LoginWindow />} />
-        <Route path="register" element={<RegistrationWindow />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegistrationPage />} />
         <Route path="main" element={<MainPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

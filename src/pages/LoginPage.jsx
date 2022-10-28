@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import Button from './UI/Button';
-import Input from './UI/Input';
+// useNavigate
+import Button from '../components/UI/Button';
+import Input from '../components/UI/Input';
+import { getUserInfoAction } from '../store/actions/user';
 
 const LoginWindow = () => {
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
-  const navigate = useNavigate();
-  const pressLoginButton = () => {
-    fetch('http://127.0.0.1:5432/login', {
-      method: 'POST',
-      body: JSON.stringify({ login, password }),
-    }).then((response) => {
-      response
-        .json()
-        .then((data) => {
-          if (response.status === 401) {
-            throw new Error(data.message);
-          }
-          localStorage.setItem('token', data.token);
-          const token = localStorage.getItem('token');
-          if (token) {
-            navigate('/main');
-          }
-        })
-        .catch((e) => {
-          alert(e.message);
-        });
-    });
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    if (login && password) {
+      dispatch(getUserInfoAction());
+    } else {
+      alert('Fill in all the fields');
+    }
   };
 
   return (
@@ -50,7 +40,7 @@ const LoginWindow = () => {
       <input className="check" type="checkbox" />
       <div className="remember-me">Remember me</div>
       <Button className="forgotButton">Forgot?</Button>
-      <Button className="lowerButtons" onClick={pressLoginButton}>LOGIN</Button>
+      <Button className="lowerButtons" onClick={handleClick}>LOGIN</Button>
       <Link to="/register">
         <Button className="lowerButtons">REGISTER</Button>
       </Link>

@@ -6,10 +6,10 @@ import {
   Link, useNavigate,
 } from 'react-router-dom';
 
-import { addContactAction } from '../store/contacts/actions';
-import ContactsList from './ContactsList';
-import Button from './UI/Button';
-import Input from './UI/Input';
+import ContactsList from '../components/ContactsList';
+import Button from '../components/UI/Button';
+import Input from '../components/UI/Input';
+import { addContactAction } from '../store/actions/contacts';
 
 const MainPage = () => {
   const dispatch = useDispatch();

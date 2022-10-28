@@ -9,7 +9,7 @@ class PostServise {
           authorization: token,
         },
       })
-      .catch(console.log);
+      .catch(console.error);
     return response.data;
   }
 }

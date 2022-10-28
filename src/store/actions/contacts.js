@@ -1,7 +1,7 @@
 import addContact from '../../API/addContact';
 import contactDelete from '../../API/deleteContact';
 import PostServise from '../../API/PostServise';
-import { FILL_CONTACTS_LIST } from './types';
+import { FILL_CONTACTS_LIST } from '../types/contacts';
 
 export const fillContactsListAction = (payload) => ({
   type: FILL_CONTACTS_LIST,

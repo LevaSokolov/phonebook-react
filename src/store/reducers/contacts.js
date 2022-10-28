@@ -1,4 +1,4 @@
-import { FILL_CONTACTS_LIST } from './types';
+import { FILL_CONTACTS_LIST } from '../types/contacts';
 
 const initialState = {
   items: [{

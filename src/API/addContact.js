@@ -27,6 +27,6 @@ const addContact = () => {
         alert(e.message);
       });
   })
-    .catch(console.log);
+    .catch(console.error);
 };
 export default addContact;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from './UI/Button';
+import Button from '../components/UI/Button';
 
 const NotFoundPage = () => (
     <div style={{ margin: '30px' }}>

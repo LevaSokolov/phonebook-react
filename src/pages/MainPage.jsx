@@ -20,6 +20,10 @@ const MainPage = () => {
     dispatch(addContactAction());
   };
 
+  const signOut = () => {
+    localStorage.removeItem('token');
+  };
+
   const token = localStorage.getItem('token');
   useEffect(() => {
     if (!token) {
@@ -42,7 +46,7 @@ const MainPage = () => {
             <Button
             className="log-out-button"
             id="log-out-button"
-            onClick={() => { localStorage.removeItem('token'); }}
+            onClick={signOut}
             >
               Log Out
               </Button>

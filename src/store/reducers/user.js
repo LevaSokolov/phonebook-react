@@ -1,12 +1,8 @@
-import { FILL_USER_INFO } from '../types/user';
+import { CLEAR_USER_INFO, FILL_USER_INFO } from '../types/user';
 
 const initialState = {
-  info: {
-    firstName: 'layon',
-    id: 322,
-    lastName: 'sucker',
-    phoneNumber: '89831368066',
-  },
+  info: {},
+  isAuthorized: false,
 };
 
 const userReducer = (state = initialState, { type, payload } = {}) => {
@@ -15,7 +11,10 @@ const userReducer = (state = initialState, { type, payload } = {}) => {
       return {
         ...state,
         info: payload,
+        isAuthorized: true,
       };
+    case CLEAR_USER_INFO:
+      return initialState;
     default:
       return initialState;
   }

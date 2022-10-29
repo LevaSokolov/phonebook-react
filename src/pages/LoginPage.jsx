@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ const LoginWindow = () => {
 
   const handleClick = () => {
     if (login && password) {
-      dispatch(getUserInfoAction());
+      dispatch(getUserInfoAction(login, password));
     } else {
       alert('Fill in all the fields');
     }

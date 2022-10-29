@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import addContact from '../../API/addContact';
 import contactDelete from '../../API/deleteContact';
 import getContacts from '../../API/getContacts';
@@ -23,5 +24,5 @@ export const deleteContactAction = (id) => (dispatch) => contactDelete(id).then(
 export const addContactAction = () => (dispatch) => addContact().then(
   () => dispatch(getContactsListAction()),
 ).catch((e) => {
-  console.error(e.message);
+  alert(e.message);
 });

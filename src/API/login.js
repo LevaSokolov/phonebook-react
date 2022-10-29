@@ -1,19 +1,18 @@
-const signIn = (login, password) => fetch(
+import axiosClient from '.';
+
+const signIn = (login, password) => axiosClient.post(
   'http://127.0.0.1:5432/login',
-  {
-    method: 'POST',
-    body: JSON.stringify({ login, password }),
-  },
-).then((response) => response
-  .json()
-  .then((data) => {
+  { login, password },
+).then(
+  (response) => {
     if (response.status === 401) {
-      throw new Error(data.message);
+      throw new Error(response.data.message);
     }
-    localStorage.setItem('token', data.token);
-  }))
-  .catch((e) => {
-    alert(e.message);
-  });
+    localStorage.setItem('token', response.data.token);
+    return response.data;
+  },
+).catch((e) => {
+  console.error(e.message);
+});
 
 export default signIn;

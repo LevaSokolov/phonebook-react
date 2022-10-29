@@ -1,20 +1,18 @@
-const signUp = (login, password) => fetch(
+import axiosClient from '.';
+
+const signUp = (login, password) => axiosClient.post(
   'http://127.0.0.1:5432/add-user',
-  {
-    method: 'POST',
-    body: JSON.stringify({
-      login,
-      password,
-    }),
-  },
-).then((response) => response
-  .json().then((data) => {
-    if (data.message) {
+  { login, password },
+).then(
+  (response) => {
+    if (response.data.message) {
       alert('This username is already taken');
-      return;
+      throw new Error(response.data.message);
     }
     alert('You have been registered successfuly');
-  })).catch((e) => {
+    return response.data;
+  },
+).catch((e) => {
   console.error(e.message);
 });
 

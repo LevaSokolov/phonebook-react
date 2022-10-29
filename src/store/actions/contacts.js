@@ -1,6 +1,6 @@
 import addContact from '../../API/addContact';
 import contactDelete from '../../API/deleteContact';
-import PostServise from '../../API/PostServise';
+import getContacts from '../../API/getContacts';
 import { FILL_CONTACTS_LIST } from '../types/contacts';
 
 export const fillContactsListAction = (payload) => ({
@@ -8,7 +8,7 @@ export const fillContactsListAction = (payload) => ({
   payload,
 });
 
-export const getContactsListAction = () => (dispatch) => PostServise.getAll().then(
+export const getContactsListAction = () => (dispatch) => getContacts().then(
   (posts) => dispatch(fillContactsListAction(posts)),
 );
 

@@ -7,8 +7,6 @@ const contactDelete = (id) => axiosClient.delete(
       contactId: id,
     },
   },
-).catch((error) => {
-  console.error(error.message);
-});
+);
 
 export default contactDelete;

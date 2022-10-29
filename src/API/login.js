@@ -11,8 +11,6 @@ const signIn = (login, password) => axiosClient.post(
     localStorage.setItem('token', response.data.token);
     return response.data;
   },
-).catch((e) => {
-  console.error(e.message);
-});
+);
 
 export default signIn;

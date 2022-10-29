@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import axiosClient from '.';
 
 const signUp = (login, password) => axiosClient.post(
@@ -12,8 +13,6 @@ const signUp = (login, password) => axiosClient.post(
     alert('You have been registered successfuly');
     return response.data;
   },
-).catch((e) => {
-  console.error(e.message);
-});
+);
 
 export default signUp;

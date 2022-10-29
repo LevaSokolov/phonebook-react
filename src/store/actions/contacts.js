@@ -10,12 +10,18 @@ export const fillContactsListAction = (payload) => ({
 
 export const getContactsListAction = () => (dispatch) => getContacts().then(
   (posts) => dispatch(fillContactsListAction(posts)),
-);
+).catch((e) => {
+  console.error(e.message);
+});
 
 export const deleteContactAction = (id) => (dispatch) => contactDelete(id).then(
   () => dispatch(getContactsListAction()),
-);
+).catch((e) => {
+  console.error(e.message);
+});
 
 export const addContactAction = () => (dispatch) => addContact().then(
   () => dispatch(getContactsListAction()),
-);
+).catch((e) => {
+  console.error(e.message);
+});

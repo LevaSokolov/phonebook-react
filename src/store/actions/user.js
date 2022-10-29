@@ -13,8 +13,12 @@ export const clearUserInfoAction = () => ({
 
 export const getUserInfoAction = (login, password) => (dispatch) => signIn(login, password).then(
   (info) => dispatch(fillUserInfoAction(info)),
-);
+).catch((e) => {
+  console.error(e.message);
+});
 
 export const signUpUserAction = (login, password) => (dispatch) => signUp(login, password).then(
   () => dispatch(getUserInfoAction(login, password)),
-);
+).catch((e) => {
+  console.error(e.message);
+});

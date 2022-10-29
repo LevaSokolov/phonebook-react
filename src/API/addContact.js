@@ -18,8 +18,6 @@ const addContact = () => {
       throw new Error(response.data.message);
     }
     return response.data;
-  }).catch((e) => {
-    console.error(e.message);
   });
 };
 

@@ -23,7 +23,7 @@ const contactsReducer = (state = initialState, { type, payload } = {}) => {
         items: payload,
       };
     default:
-      return initialState;
+      return state;
   }
 };
 

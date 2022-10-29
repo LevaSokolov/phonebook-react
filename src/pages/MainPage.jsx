@@ -1,7 +1,7 @@
 import '../styles/MainPage.css';
 
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Link, useNavigate,
 } from 'react-router-dom';
@@ -10,26 +10,36 @@ import ContactsList from '../components/ContactsList';
 import Button from '../components/UI/Button';
 import Input from '../components/UI/Input';
 import { addContactAction } from '../store/actions/contacts';
+import { clearUserInfoAction } from '../store/actions/user';
+import { authStatusSelector } from '../store/selectors/user';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
+  const isAuthorized = useSelector(authStatusSelector);
 
   const onAddClick = () => {
     dispatch(addContactAction());
   };
 
-  const signOut = () => {
-    localStorage.removeItem('token');
+  const onInputClear = () => {
+    setInputValue('');
   };
 
-  const token = localStorage.getItem('token');
+  const signOut = () => {
+    localStorage.removeItem('token');
+    dispatch(clearUserInfoAction());
+  };
+
   useEffect(() => {
-    if (!token) {
-      navigate('/login', { replace: true });
+    if (!isAuthorized) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login', { replace: true });
+      }
     }
-  }, [token]);
+  }, [isAuthorized]);
 
   return (
     <>
@@ -60,7 +70,7 @@ const MainPage = () => {
             value={inputValue}
             onChange={setInputValue}
           />
-          <Button className="header-button" id="clear-button" onClick={() => { setInputValue(''); }}>Clear</Button>
+          <Button className="header-button" id="clear-button" onClick={onInputClear}>Clear</Button>
           <Button className="header-button" id="add-contact" onClick={onAddClick}>Add contact</Button>
         </div>
         <ContactsList inputValue={inputValue} />

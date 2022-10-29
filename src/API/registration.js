@@ -14,9 +14,8 @@ const signUp = (login, password) => fetch(
       return;
     }
     alert('You have been registered successfuly');
-  // setTimeout(() => (window.location.href = ""), 4000);
   })).catch((e) => {
-  alert(e.message);
+  console.error(e.message);
 });
 
 export default signUp;

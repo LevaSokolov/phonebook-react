@@ -11,10 +11,6 @@ const signIn = (login, password) => fetch(
       throw new Error(data.message);
     }
     localStorage.setItem('token', data.token);
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   navigate('/main');
-    // }
   }))
   .catch((e) => {
     alert(e.message);

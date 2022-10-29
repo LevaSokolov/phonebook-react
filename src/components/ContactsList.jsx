@@ -5,10 +5,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteContactAction, getContactsListAction } from '../store/actions/contacts';
+import { contactsSelector } from '../store/selectors/contacts';
 import Button from './UI/Button';
 
 const ContactsList = ({ inputValue = '' }) => {
-  const contactsList = useSelector((state) => state.contacts.items);
+  const contactsList = useSelector(contactsSelector);
   const dispatch = useDispatch();
 
   const pressDeleteButton = (id) => {

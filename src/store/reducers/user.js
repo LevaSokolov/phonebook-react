@@ -16,7 +16,7 @@ const userReducer = (state = initialState, { type, payload } = {}) => {
     case CLEAR_USER_INFO:
       return initialState;
     default:
-      return initialState;
+      return state;
   }
 };
 

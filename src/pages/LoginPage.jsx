@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
-// useNavigate
 import Button from '../components/UI/Button';
 import Input from '../components/UI/Input';
 import { getUserInfoAction } from '../store/actions/user';
+import { authStatusSelector } from '../store/selectors/user';
 
 const LoginWindow = () => {
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isAuthorized = useSelector(authStatusSelector);
 
   const handleClick = () => {
     if (login && password) {
@@ -20,6 +21,15 @@ const LoginWindow = () => {
       alert('Fill in all the fields');
     }
   };
+
+  useEffect(() => {
+    if (isAuthorized) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        navigate('/main');
+      }
+    }
+  }, [isAuthorized]);
 
   return (
     <div className="post">

@@ -1,0 +1,2 @@
+export const FILL_USER_INFO = 'FILL_USER_INFO';
+export const CLEAR_USER_INFO = 'CLEAR_USER_INFO';

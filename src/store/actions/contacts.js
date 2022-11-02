@@ -19,8 +19,10 @@ export const getContactsListAction = () => (dispatch) => {
   dispatch(toggleIsFetching(true));
   getContacts()
     .then(
-      (posts) => dispatch(fillContactsListAction(posts)),
-      dispatch(toggleIsFetching(false)),
+      (posts) => {
+        dispatch(toggleIsFetching(false));
+        dispatch(fillContactsListAction(posts));
+      },
     ).catch((e) => {
       console.error(e.message);
     });
@@ -30,8 +32,10 @@ export const deleteContactAction = (id) => (dispatch) => {
   dispatch(toggleIsFetching(true));
   contactDelete(id)
     .then(
-      () => dispatch(getContactsListAction()),
-      // dispatch(toggleIsFetching(false)),
+      () => {
+        dispatch(toggleIsFetching(false));
+        dispatch(getContactsListAction());
+      },
     ).catch((e) => {
       console.error(e.message);
     });
@@ -39,10 +43,13 @@ export const deleteContactAction = (id) => (dispatch) => {
 
 export const addContactAction = () => (dispatch) => {
   dispatch(toggleIsFetching(true));
-  addContact().then(
-    () => dispatch(getContactsListAction()),
-    dispatch(toggleIsFetching(false)),
-  ).catch((e) => {
-    alert(e.message);
-  });
+  addContact()
+    .then(
+      () => {
+        dispatch(toggleIsFetching(false));
+        dispatch(getContactsListAction());
+      },
+    ).catch((e) => {
+      alert(e.message);
+    });
 };

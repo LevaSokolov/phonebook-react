@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
+import Preloader from '../components/Preloader';
 import Button from '../components/UI/Button';
 import Input from '../components/UI/Input';
 import { getUserInfoAction } from '../store/actions/user';
-import { authStatusSelector } from '../store/selectors/user';
+import { authStatusSelector, selectIsFetchingUser } from '../store/selectors/user';
 
 const LoginWindow = () => {
   const [password, setPassword] = useState('');
@@ -14,6 +15,7 @@ const LoginWindow = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthorized = useSelector(authStatusSelector);
+  const isLoading = useSelector(selectIsFetchingUser);
 
   const handleClick = () => {
     if (login && password) {
@@ -34,6 +36,7 @@ const LoginWindow = () => {
 
   return (
     <div className="post">
+      {isLoading && <Preloader />}
       <strong className="login-title">LOGIN IN PHONEBOOK, BUDDY</strong>
       <Input
         value={login}

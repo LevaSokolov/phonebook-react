@@ -7,17 +7,19 @@ import {
 } from 'react-router-dom';
 
 import ContactsList from '../components/ContactsList';
+import Preloader from '../components/Preloader';
 import Button from '../components/UI/Button';
 import Input from '../components/UI/Input';
 import { addContactAction } from '../store/actions/contacts';
 import { clearUserInfoAction } from '../store/actions/user';
-import { authStatusSelector } from '../store/selectors/user';
+import { authStatusSelector, selectIsFetchingUser } from '../store/selectors/user';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
   const isAuthorized = useSelector(authStatusSelector);
+  const isLoading = useSelector(selectIsFetchingUser);
 
   const onAddClick = () => {
     dispatch(addContactAction());
@@ -49,6 +51,7 @@ const MainPage = () => {
         href="https://fonts.googleapis.com/css2?family=Courgette&display=swap"
         rel="stylesheet"
       />
+      {isLoading && <Preloader />}
       <div className="container">
         <div className="header">
           <h1 className="main-title">Phone book</h1>

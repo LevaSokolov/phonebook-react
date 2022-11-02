@@ -1,0 +1,14 @@
+.pre-loader-box {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  background-color: rgb(240, 240, 240);
+  opacity: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+height: 400px;
+}

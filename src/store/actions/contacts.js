@@ -15,8 +15,12 @@ export const toggleIsFetching = (payload) => ({
   payload,
 });
 
+const switchIsFetching = (dispatch, state) => {
+  dispatch(toggleIsFetching(state));
+};
+
 export const getContactsListAction = () => (dispatch) => {
-  dispatch(toggleIsFetching(true));
+  switchIsFetching(dispatch, true);
   getContacts()
     .then(
       (posts) => {
@@ -29,27 +33,29 @@ export const getContactsListAction = () => (dispatch) => {
 };
 
 export const deleteContactAction = (id) => (dispatch) => {
-  dispatch(toggleIsFetching(true));
+  switchIsFetching(dispatch, true);
   contactDelete(id)
     .then(
       () => {
-        dispatch(toggleIsFetching(false));
+        switchIsFetching(dispatch, false);
         dispatch(getContactsListAction());
       },
     ).catch((e) => {
+      switchIsFetching(dispatch, false);
       console.error(e.message);
     });
 };
 
 export const addContactAction = () => (dispatch) => {
-  dispatch(toggleIsFetching(true));
+  switchIsFetching(dispatch, true);
   addContact()
     .then(
       () => {
-        dispatch(toggleIsFetching(false));
+        switchIsFetching(dispatch, false);
         dispatch(getContactsListAction());
       },
     ).catch((e) => {
+      switchIsFetching(dispatch, false);
       alert(e.message);
     });
 };

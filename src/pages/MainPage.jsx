@@ -1,4 +1,4 @@
-import '../styles/MainPage.css';
+import '../styles/MainPage.scss';
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

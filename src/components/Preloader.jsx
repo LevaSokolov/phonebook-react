@@ -1,4 +1,4 @@
-import '../styles/Preloader.css';
+import '../styles/Preloader.scss';
 
 import React from 'react';
 

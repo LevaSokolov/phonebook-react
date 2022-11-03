@@ -1,4 +1,4 @@
-import '../styles/ContactsList.css';
+import '../styles/ContactsList.scss';
 
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';

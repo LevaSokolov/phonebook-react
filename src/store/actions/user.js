@@ -17,16 +17,33 @@ export const toggleIsFetching = (payload) => ({
   payload,
 });
 
-export const getUserInfoAction = (login, password) => (dispatch) => {
-  dispatch(toggleIsFetching(true));
-  signIn(login, password)
-    .then((info) => dispatch(fillUserInfoAction(info)))
-    .then(() => dispatch(toggleIsFetching(false)))
-    .catch((e) => { console.error(e.message); });
+const switchIsFetching = (dispatch, state) => {
+  dispatch(toggleIsFetching(state));
 };
 
-export const signUpUserAction = (login, password) => (dispatch) => signUp(login, password).then(
-  () => dispatch(getUserInfoAction(login, password)),
-).catch((e) => {
-  console.error(e.message);
-});
+export const getUserInfoAction = (login, password) => (dispatch) => {
+  switchIsFetching(dispatch, true);
+  signIn(login, password)
+    .then((info) => {
+      dispatch(fillUserInfoAction(info));
+      switchIsFetching(dispatch, false);
+    })
+    .catch((e) => {
+      switchIsFetching(dispatch, false);
+      alert(e.message);
+    });
+};
+
+export const signUpUserAction = (login, password) => (dispatch) => {
+  dispatch(toggleIsFetching(dispatch, true));
+  signUp(login, password)
+    .then(
+      () => {
+        switchIsFetching(dispatch, true);
+        dispatch(getUserInfoAction(login, password));
+      },
+    ).catch((e) => {
+      switchIsFetching(dispatch, false);
+      console.error(e.message);
+    });
+};

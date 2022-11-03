@@ -1,3 +1,5 @@
+$mainFontSize: 18px;
+
 * {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -7,7 +9,7 @@
 #root {
   width: 100%;
   height: 100vh;
-  background-image: url(..//assets/images/background.jpg);
+  background-image: url(../assets/images/background.jpg);
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -36,27 +38,14 @@
   width: 700px;
 }
 
-.usernameInput {
-  font-size: 18px;
+.usernameInput, .passInput {
+  font-size: $mainFontSize;
   border: none;
   width: 280px;
   height: 48px;
 }
 
-.usernameInput:hover {
-  background-color: rgb(198, 221, 226);
-  transition-property: background-color;
-  transition-duration: 0.5s;
-}
-
-.passInput {
-  font-size: 18px;
-  border: none;
-  width: 280px;
-  height: 48px;
-}
-
-.passInput:hover {
+.usernameInput,.passInput:hover {
   background-color: rgb(198, 221, 226);
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -70,14 +59,14 @@
 }
 
 .remember-me {
-  font-size: 14px;
+  font-size: $mainFontSize;
   font-family: Arial, Helvetica, sans-serif;
-  margin: -18px 0px 0px -140px;
+  margin: -20px 0px 0px -130px;
 }
 
 .forgotButton {
   height: 24px;
-  font-size: 14px;
+  font-size: $mainFontSize;
   font-family: Arial, Helvetica, sans-serif;
   margin: -30px 0px 0px 218px;
   cursor: pointer;

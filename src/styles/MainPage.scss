@@ -1,6 +1,12 @@
 $mainFontSize: 22px;
 $mainFontFamily: 'Courgette', cursive;
 
+@mixin buttonsOnHover {
+  color: rgb(164, 219, 255);
+  transition: color 0.1s linear;
+  cursor: pointer;
+}
+
 .header {
   padding-left: 16px;
   padding-right: 14px;
@@ -23,12 +29,6 @@ $mainFontFamily: 'Courgette', cursive;
   height: 32px;
   font-family: $mainFontFamily;
   font-size: $mainFontSize;
-  cursor: pointer;
-}
-
-.log-out-button:hover {
-  color: rgb(164, 219, 255);
-  transition: color 0.1s linear;
   cursor: pointer;
 }
 
@@ -67,12 +67,6 @@ $mainFontFamily: 'Courgette', cursive;
   margin-left: 12px;
 }
 
-.header-button:hover {
-  color: rgb(164, 219, 255);
-  transition: color 0.1s linear;
-  cursor: pointer;
-}
-
 .deleteButton {
   font-family: $mainFontFamily;
   font-size: $mainFontSize;
@@ -81,10 +75,16 @@ $mainFontFamily: 'Courgette', cursive;
   cursor: pointer;
 }
 
+.header-button:hover {
+  @include buttonsOnHover
+}
+
 .deleteButton:hover {
-  color: rgb(164, 219, 255);
-  transition: color 0.1s linear;
-  cursor: pointer;
+  @include buttonsOnHover
+}
+
+.log-out-button:hover {
+  @include buttonsOnHover
 }
 
 *,

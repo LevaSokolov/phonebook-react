@@ -1,5 +1,12 @@
 $mainFontSize: 18px;
 
+@mixin buttonsOnHover {
+  color: rgb(50, 110, 153);
+  transition: color 0.2s linear;
+  cursor: pointer;
+  text-shadow: 6px 6px 6px;
+}
+
 * {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -73,10 +80,7 @@ $mainFontSize: 18px;
 }
 
 .forgotButton:hover {
-  color: rgb(50, 110, 153);
-  transition: color 0.2s linear;
-  cursor: pointer;
-  text-shadow: 2px 4px 4px;
+  @include buttonsOnHover
 }
 
 .lowerButtons {
@@ -88,8 +92,5 @@ $mainFontSize: 18px;
 }
 
 .lowerButtons:hover {
-  color: rgb(50, 110, 153);
-  transition: color 0.2s linear;
-  cursor: pointer;
-  text-shadow: 6px 6px 6px;
+  @include buttonsOnHover
 }

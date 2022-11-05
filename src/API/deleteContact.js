@@ -1,6 +1,6 @@
 import axiosClient from '.';
 
-const contactDelete = (id) => axiosClient.delete(
+const deleteContact = (id) => axiosClient.delete(
   'http://127.0.0.1:5432/contacts',
   {
     data: {
@@ -9,4 +9,4 @@ const contactDelete = (id) => axiosClient.delete(
   },
 );
 
-export default contactDelete;
+export default deleteContact;

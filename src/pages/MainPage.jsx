@@ -16,9 +16,9 @@ import { isFetchingSelector } from '../store/selectors/contacts';
 import { authStatusSelector, selectIsFetchingUser } from '../store/selectors/user';
 
 const MainPage = () => {
-  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isAuthorized = useSelector(authStatusSelector);
   const isLoading = useSelector(selectIsFetchingUser);
   const isContactsLoading = useSelector(isFetchingSelector);
@@ -64,7 +64,7 @@ const MainPage = () => {
             onClick={signOut}
             >
               Log Out
-              </Button>
+            </Button>
           </Link>
         </div>
         <div className="search-block">

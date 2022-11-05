@@ -6,7 +6,7 @@ import axiosClient from '.';
 const addContact = () => {
   const first_name = prompt('Введите имя');
   const last_name = prompt('Введите фамилию');
-  const phone_number = prompt('Введите номер мобилки');
+  const phone_number = prompt('Введите номер телефона');
   return axiosClient.post(
     'http://127.0.0.1:5432/contacts-add',
     {
